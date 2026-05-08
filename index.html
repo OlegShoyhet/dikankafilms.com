@@ -1,144 +1,206 @@
+```html id="s8b6q2"
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dikankafilms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>superservice.help</title>
 
-  <!-- Elegant fashion-style fonts -->
+  <!-- Surreal elegant fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      background: #f5f1ea;
-      color: #111;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      position: relative;
-    }
-
-    /* subtle texture */
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    body{
+      height:100vh;
+      overflow:hidden;
       background:
-        radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 40%),
-        radial-gradient(circle at bottom right, rgba(0,0,0,0.03), transparent 40%);
-      pointer-events: none;
+        radial-gradient(circle at top, #f6d8a8 0%, #d9a86c 25%, #6f4b34 70%, #1a1412 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      font-family:'Cormorant Garamond', serif;
     }
 
-    .container {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      padding: 20px;
+    /* surreal sky texture */
+    body::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.14), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(0,0,0,0.18), transparent 30%);
+      mix-blend-mode:screen;
+      pointer-events:none;
     }
 
-    .brand {
-      font-size: clamp(4rem, 13vw, 11rem);
-      line-height: 0.9;
-      letter-spacing: 0.08em;
-      text-transform: lowercase;
-      font-weight: 300;
-      position: relative;
-      color: #111;
+    .sun{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle, #fff6cc 0%, #ffd27a 45%, rgba(255,180,80,0.1) 70%);
+      top:8%;
+      right:10%;
+      filter:blur(2px);
+      opacity:0.9;
     }
 
-    /* artistic outlined layer */
-    .brand::after {
-      content: "dikankafilms";
-      position: absolute;
-      left: 8px;
-      top: 8px;
-      z-index: -1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(0,0,0,0.15);
+    /* melting landscape */
+    .ground{
+      position:absolute;
+      bottom:-10%;
+      width:120%;
+      height:38%;
+      background:
+        linear-gradient(to top, #1b120f, #3a241b 40%, #8d5b3d);
+      border-radius:45% 55% 0 0;
+      filter:blur(1px);
     }
 
-    .subtitle {
-      margin-top: 28px;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      color: rgba(0,0,0,0.65);
+    .container{
+      position:relative;
+      z-index:5;
+      text-align:center;
+      padding:20px;
     }
 
-    .line {
-      width: 140px;
-      height: 1px;
-      background: rgba(0,0,0,0.2);
-      margin: 24px auto;
+    .brand{
+      position:relative;
+      font-family:'Cinzel', serif;
+      font-size:clamp(3.5rem, 11vw, 10rem);
+      color:#f7ead7;
+      letter-spacing:0.08em;
+      line-height:0.9;
+      text-transform:lowercase;
+
+      text-shadow:
+        0 2px 0 rgba(0,0,0,0.25),
+        0 8px 25px rgba(0,0,0,0.45);
+
+      transform:skewY(-4deg);
+      animation:float 7s ease-in-out infinite;
     }
 
-    /* floating couture accents */
-    .accent {
-      position: absolute;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 50%;
+    /* melting text effect */
+    .brand::after{
+      content:"superservice.help";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      color:rgba(255,255,255,0.15);
+      filter:blur(10px);
+      transform:
+        translateY(22px)
+        scaleY(1.4)
+        skewX(8deg);
+      z-index:-1;
     }
 
-    .accent.one {
-      width: 420px;
-      height: 420px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .subtitle{
+      margin-top:28px;
+      font-size:0.9rem;
+      letter-spacing:0.45em;
+      text-transform:uppercase;
+      color:rgba(255,245,230,0.75);
+      font-family:'Cormorant Garamond', serif;
     }
 
-    .accent.two {
-      width: 520px;
-      height: 520px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    /* surreal floating clocks */
+    .clock{
+      position:absolute;
+      border:2px solid rgba(255,255,255,0.25);
+      border-radius:50%;
+      backdrop-filter:blur(3px);
+      opacity:0.5;
     }
 
-    @media (max-width: 768px) {
-      .subtitle {
-        letter-spacing: 0.35em;
-        font-size: 0.65rem;
+    .clock.one{
+      width:120px;
+      height:120px;
+      left:10%;
+      top:20%;
+      border-radius:55% 45% 60% 40%;
+      transform:rotate(25deg);
+    }
+
+    .clock.two{
+      width:180px;
+      height:180px;
+      right:12%;
+      bottom:18%;
+      border-radius:40% 60% 50% 50%;
+      transform:rotate(-18deg);
+    }
+
+    .clock.three{
+      width:80px;
+      height:80px;
+      left:25%;
+      bottom:22%;
+      border-radius:65% 35% 45% 55%;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px) skewY(-4deg);
+      }
+      50%{
+        transform:translateY(-10px) skewY(-4deg);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .brand{
+        line-height:1;
       }
 
-      .accent.one {
-        width: 260px;
-        height: 260px;
+      .subtitle{
+        letter-spacing:0.22em;
+        font-size:0.7rem;
       }
 
-      .accent.two {
-        width: 340px;
-        height: 340px;
+      .sun{
+        width:180px;
+        height:180px;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="accent one"></div>
-  <div class="accent two"></div>
+  <div class="sun"></div>
+  <div class="ground"></div>
+
+  <div class="clock one"></div>
+  <div class="clock two"></div>
+  <div class="clock three"></div>
 
   <div class="container">
-    <div class="brand">dikankafilms</div>
-
-    <div class="line"></div>
+    <div class="brand">
+      superservice.help
+    </div>
 
     <div class="subtitle">
-      cinéma • couture • motion
+      surreal systems • dream logic • digital craft
     </div>
   </div>
 
 </body>
 </html>
+```
+
