@@ -1,38 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dikankafilms</title>
+
+  <!-- Elegant fashion-style fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial;
-      max-width: 700px;
-      margin: 60px auto;
+      background: #f5f1ea;
+      color: #111;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      position: relative;
+    }
+
+    /* subtle texture */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(0,0,0,0.04), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(0,0,0,0.03), transparent 40%);
+      pointer-events: none;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 2;
       padding: 20px;
-      line-height: 1.6;
     }
 
-    h1 {
-      color: #333;
+    .brand {
+      font-size: clamp(4rem, 13vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      font-weight: 300;
+      position: relative;
+      color: #111;
     }
 
-    .button {
-      display: inline-block;
-      padding: 12px 20px;
-      background: black;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
+    /* artistic outlined layer */
+    .brand::after {
+      content: "dikankafilms";
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      z-index: -1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.15);
+    }
+
+    .subtitle {
+      margin-top: 28px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.65);
+    }
+
+    .line {
+      width: 140px;
+      height: 1px;
+      background: rgba(0,0,0,0.2);
+      margin: 24px auto;
+    }
+
+    /* floating couture accents */
+    .accent {
+      position: absolute;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 50%;
+    }
+
+    .accent.one {
+      width: 420px;
+      height: 420px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .accent.two {
+      width: 520px;
+      height: 520px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 768px) {
+      .subtitle {
+        letter-spacing: 0.35em;
+        font-size: 0.65rem;
+      }
+
+      .accent.one {
+        width: 260px;
+        height: 260px;
+      }
+
+      .accent.two {
+        width: 340px;
+        height: 340px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Hello 👋</h1>
-  <p>DIKANKAFILMS</p>
-  <p>Paris - France</p>
 
-  <a class="button" href="mailto:me@example.com">
-    Contact Me
-  </a>
+  <div class="accent one"></div>
+  <div class="accent two"></div>
+
+  <div class="container">
+    <div class="brand">dikankafilms</div>
+
+    <div class="line"></div>
+
+    <div class="subtitle">
+      cinéma • couture • motion
+    </div>
+  </div>
+
 </body>
 </html>
