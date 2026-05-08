@@ -18,40 +18,73 @@
       box-sizing:border-box;
     }
 
-    html,body{
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      background:#121313;
+    html{
+      scroll-behavior:smooth;
     }
 
     body{
+      background:#121313;
+      color:#f5f1ea;
+      overflow-x:hidden;
+      font-family:'Cormorant Garamond', serif;
+    }
+
+    /* NAVIGATION */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+
+      display:flex;
+      justify-content:center;
+      gap:40px;
+
+      padding:26px 20px;
+
+      background:rgba(10,10,10,0.12);
+      backdrop-filter:blur(10px);
+    }
+
+    nav a{
+      color:rgba(255,255,255,0.75);
+      text-decoration:none;
+
+      font-family:'Montserrat', sans-serif;
+      text-transform:uppercase;
+
+      letter-spacing:0.3em;
+      font-size:0.7rem;
+
+      transition:0.3s ease;
+    }
+
+    nav a:hover{
+      color:#ffffff;
+      letter-spacing:0.4em;
+    }
+
+    /* SECTIONS */
+
+    section{
       position:relative;
+      min-height:100vh;
+
       display:flex;
       align-items:center;
       justify-content:center;
 
-      background:
-        radial-gradient(circle at top left, rgba(94,122,128,0.16), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(51,35,28,0.25), transparent 35%),
-        linear-gradient(
-          135deg,
-          #161717 0%,
-          #202524 25%,
-          #2d3938 45%,
-          #1c2120 65%,
-          #35261f 100%
-        );
-
-      font-family:'Cormorant Garamond', serif;
-      color:#f4f0e8;
+      padding:120px 10vw;
+      overflow:hidden;
     }
 
-    /* moving grain texture */
+    /* BACKGROUND */
 
     body::before{
       content:"";
-      position:absolute;
+      position:fixed;
       inset:-20%;
 
       background:
@@ -60,63 +93,73 @@
           rgba(255,255,255,0.015) 0px,
           rgba(255,255,255,0.015) 1px,
           transparent 1px,
-          transparent 100px
+          transparent 120px
         );
 
       opacity:0.45;
-
       animation:grainMove 18s linear infinite;
 
       pointer-events:none;
+      z-index:1;
     }
 
     .orb{
       position:absolute;
-      width:42vw;
-      height:42vw;
       border-radius:50%;
-
-      background:
-        radial-gradient(circle,
-        rgba(75,120,130,0.22) 0%,
-        rgba(75,120,130,0.03) 60%,
-        transparent 75%);
-
-      filter:blur(55px);
-
-      top:-12%;
-      right:-10%;
-
-      animation:orbFloat 18s ease-in-out infinite;
+      filter:blur(60px);
+      pointer-events:none;
     }
 
-    .orb2{
-      position:absolute;
-      width:26vw;
-      height:26vw;
-      border-radius:50%;
+    .orb.one{
+      width:40vw;
+      height:40vw;
 
       background:
         radial-gradient(circle,
-        rgba(96,28,28,0.22) 0%,
+        rgba(72,118,128,0.25),
         transparent 70%);
 
-      filter:blur(45px);
+      top:-10%;
+      right:-10%;
 
-      bottom:-8%;
-      left:-5%;
-
-      animation:orbFloat2 14s ease-in-out infinite;
+      animation:float1 18s ease-in-out infinite;
     }
 
-    .container{
+    .orb.two{
+      width:30vw;
+      height:30vw;
+
+      background:
+        radial-gradient(circle,
+        rgba(96,20,20,0.22),
+        transparent 70%);
+
+      bottom:-10%;
+      left:-10%;
+
+      animation:float2 15s ease-in-out infinite;
+    }
+
+    /* HOME */
+
+    #home{
+      background:
+        linear-gradient(
+          135deg,
+          #161717 0%,
+          #202524 25%,
+          #2d3938 45%,
+          #1c2120 65%,
+          #35261f 100%
+        );
+    }
+
+    .home-content{
       position:relative;
       z-index:5;
       text-align:center;
-      padding:30px;
+      max-width:1200px;
     }
-
-    /* blood slash */
 
     .slash{
       position:absolute;
@@ -127,54 +170,42 @@
         linear-gradient(
           to right,
           transparent,
-          rgba(117,10,10,0.95),
-          rgba(175,22,22,1),
-          rgba(117,10,10,0.95),
+          rgba(130,0,0,0.9),
+          rgba(180,20,20,1),
+          rgba(130,0,0,0.9),
           transparent
         );
 
-      top:52%;
+      top:50%;
       left:50%;
 
       transform:
-        translate(-50%, -50%)
+        translate(-50%,-50%)
         rotate(-6deg);
 
       box-shadow:
-        0 0 20px rgba(120,0,0,0.55),
-        0 0 45px rgba(120,0,0,0.25);
-
-      opacity:0.9;
+        0 0 30px rgba(120,0,0,0.5);
 
       animation:slashPulse 7s ease-in-out infinite;
     }
 
     .brand{
       position:relative;
+      z-index:3;
 
-      font-size:clamp(4.5rem, 14vw, 13rem);
-
-      line-height:0.85;
+      font-size:clamp(5rem,14vw,13rem);
+      line-height:0.82;
 
       text-transform:lowercase;
-
       font-weight:700;
 
       letter-spacing:0.03em;
 
-      color:#f5f1ea;
-
-      z-index:2;
-
       animation:brandFloat 8s ease-in-out infinite;
 
       text-shadow:
-        0 0 1px rgba(255,255,255,0.25),
-        0 8px 30px rgba(0,0,0,0.55),
-        0 0 80px rgba(255,255,255,0.04);
+        0 8px 30px rgba(0,0,0,0.55);
     }
-
-    /* ghost couture layer */
 
     .brand::before{
       content:"dikankafilms";
@@ -195,79 +226,128 @@
       z-index:-1;
     }
 
-    /* deep shadow layer */
-
-    .brand::after{
-      content:"dikankafilms";
-
-      position:absolute;
-      inset:0;
-
-      color:rgba(120,0,0,0.18);
-
-      transform:
-        translate(-12px,-8px);
-
-      filter:blur(6px);
-
-      animation:ghostShift2 9s ease-in-out infinite;
-
-      z-index:-2;
-    }
-
     .subtitle{
-      margin-top:42px;
+      margin-top:40px;
 
       font-family:'Montserrat', sans-serif;
-
       text-transform:uppercase;
 
       letter-spacing:0.5em;
+      font-size:0.72rem;
 
-      font-size:0.7rem;
-
-      color:rgba(245,240,232,0.62);
-
-      animation:subtitleFade 6s ease-in-out infinite;
+      color:rgba(255,255,255,0.62);
     }
 
     .line{
       width:220px;
       height:1px;
 
-      margin:30px auto 0 auto;
+      margin:30px auto;
 
       background:
         linear-gradient(
           to right,
           transparent,
-          rgba(255,255,255,0.4),
+          rgba(255,255,255,0.45),
           transparent
         );
-
-      animation:lineExpand 5s ease-in-out infinite;
     }
+
+    /* ABOUT */
+
+    #about{
+      background:
+        linear-gradient(
+          180deg,
+          #161717 0%,
+          #1c2424 100%
+        );
+    }
+
+    .about-content{
+      position:relative;
+      z-index:5;
+      max-width:900px;
+      text-align:center;
+    }
+
+    h2{
+      font-size:clamp(3rem,8vw,7rem);
+      font-weight:600;
+
+      margin-bottom:40px;
+
+      text-transform:lowercase;
+    }
+
+    .text{
+      font-size:1.5rem;
+      line-height:1.7;
+
+      color:rgba(255,255,255,0.72);
+    }
+
+    /* CONTACT */
+
+    #contact{
+      background:
+        linear-gradient(
+          135deg,
+          #141515 0%,
+          #2a2f2f 50%,
+          #2f221c 100%
+        );
+    }
+
+    .contact-content{
+      position:relative;
+      z-index:5;
+      text-align:center;
+    }
+
+    .contact-box{
+      margin-top:40px;
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      padding:50px;
+
+      background:rgba(255,255,255,0.03);
+
+      backdrop-filter:blur(8px);
+    }
+
+    .contact-line{
+      margin:18px 0;
+
+      font-size:1.3rem;
+      letter-spacing:0.08em;
+
+      color:rgba(255,255,255,0.82);
+    }
+
+    /* SHAPES */
 
     .shape{
       position:absolute;
       border:1px solid rgba(255,255,255,0.06);
-      backdrop-filter:blur(4px);
+      backdrop-filter:blur(3px);
     }
 
     .shape.one{
       width:180px;
       height:180px;
 
-      left:7%;
       top:14%;
+      left:8%;
 
       transform:rotate(12deg);
 
-      animation:shapeMove1 12s ease-in-out infinite;
+      animation:shape1 12s ease-in-out infinite;
     }
 
     .shape.two{
-      width:110px;
+      width:120px;
       height:320px;
 
       right:10%;
@@ -275,7 +355,49 @@
 
       transform:rotate(-10deg);
 
-      animation:shapeMove2 14s ease-in-out infinite;
+      animation:shape2 14s ease-in-out infinite;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes grainMove{
+      from{
+        transform:translateX(0px);
+      }
+
+      to{
+        transform:translateX(120px);
+      }
+    }
+
+    @keyframes float1{
+      0%,100%{
+        transform:translate(0,0);
+      }
+
+      50%{
+        transform:translate(-40px,30px);
+      }
+    }
+
+    @keyframes float2{
+      0%,100%{
+        transform:translate(0,0);
+      }
+
+      50%{
+        transform:translate(30px,-20px);
+      }
+    }
+
+    @keyframes slashPulse{
+      0%,100%{
+        opacity:0.8;
+      }
+
+      50%{
+        opacity:1;
+      }
     }
 
     @keyframes brandFloat{
@@ -284,7 +406,7 @@
       }
 
       50%{
-        transform:translateY(-8px);
+        transform:translateY(-10px);
       }
     }
 
@@ -298,91 +420,17 @@
       }
     }
 
-    @keyframes ghostShift2{
-      0%,100%{
-        transform:translate(-12px,-8px);
-      }
-
-      50%{
-        transform:translate(-2px,-15px);
-      }
-    }
-
-    @keyframes slashPulse{
-      0%,100%{
-        opacity:0.85;
-        transform:translate(-50%, -50%) rotate(-6deg) scaleX(1);
-      }
-
-      50%{
-        opacity:1;
-        transform:translate(-50%, -50%) rotate(-6deg) scaleX(1.05);
-      }
-    }
-
-    @keyframes orbFloat{
-      0%,100%{
-        transform:translate(0,0);
-      }
-
-      50%{
-        transform:translate(-40px,30px);
-      }
-    }
-
-    @keyframes orbFloat2{
-      0%,100%{
-        transform:translate(0,0);
-      }
-
-      50%{
-        transform:translate(30px,-25px);
-      }
-    }
-
-    @keyframes grainMove{
-      0%{
-        transform:translateX(0px);
-      }
-
-      100%{
-        transform:translateX(100px);
-      }
-    }
-
-    @keyframes subtitleFade{
-      0%,100%{
-        opacity:0.45;
-      }
-
-      50%{
-        opacity:1;
-      }
-    }
-
-    @keyframes lineExpand{
-      0%,100%{
-        width:220px;
-        opacity:0.45;
-      }
-
-      50%{
-        width:280px;
-        opacity:1;
-      }
-    }
-
-    @keyframes shapeMove1{
+    @keyframes shape1{
       0%,100%{
         transform:rotate(12deg) translateY(0px);
       }
 
       50%{
-        transform:rotate(18deg) translateY(-18px);
+        transform:rotate(18deg) translateY(-20px);
       }
     }
 
-    @keyframes shapeMove2{
+    @keyframes shape2{
       0%,100%{
         transform:rotate(-10deg) translateY(0px);
       }
@@ -392,20 +440,43 @@
       }
     }
 
+    /* MOBILE */
+
     @media(max-width:768px){
 
+      nav{
+        gap:18px;
+      }
+
+      nav a{
+        font-size:0.58rem;
+        letter-spacing:0.18em;
+      }
+
       .brand{
-        font-size:4.8rem;
-        line-height:0.95;
+        font-size:5rem;
+        line-height:0.92;
+      }
+
+      h2{
+        font-size:3rem;
+      }
+
+      .text{
+        font-size:1.1rem;
+      }
+
+      .contact-box{
+        padding:35px 20px;
+      }
+
+      .contact-line{
+        font-size:1rem;
       }
 
       .subtitle{
-        font-size:0.62rem;
-        letter-spacing:0.28em;
-      }
-
-      .slash{
-        height:6px;
+        font-size:0.6rem;
+        letter-spacing:0.22em;
       }
 
       .shape{
@@ -418,27 +489,86 @@
 
 <body>
 
-  <div class="orb"></div>
-  <div class="orb2"></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">Studio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="orb one"></div>
+  <div class="orb two"></div>
 
   <div class="shape one"></div>
   <div class="shape two"></div>
 
-  <div class="container">
+  <!-- HOME -->
 
-    <div class="slash"></div>
+  <section id="home">
 
-    <div class="brand">
-      dikankafilms
+    <div class="home-content">
+
+      <div class="slash"></div>
+
+      <div class="brand">
+        dikankafilms
+      </div>
+
+      <div class="line"></div>
+
+      <div class="subtitle">
+        postmodern cinema • couture motion • brutal elegance
+      </div>
+
     </div>
 
-    <div class="line"></div>
+  </section>
 
-    <div class="subtitle">
-      postmodern cinema • couture motion • brutal elegance
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="about-content">
+
+      <h2>studio</h2>
+
+      <div class="text">
+        Dikankafilms explores cinematic form through fashion,
+        architecture, silence, movement and postmodern atmosphere.
+        A visual language shaped by concrete textures, sea tones,
+        dark wood interiors and fractured elegance.
+      </div>
+
     </div>
 
-  </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="contact-content">
+
+      <h2>contact</h2>
+
+      <div class="contact-box">
+
+        <div class="contact-line">
+          Anna Pokorskaya
+        </div>
+
+        <div class="contact-line">
+          Paris
+        </div>
+
+        <div class="contact-line">
+          France
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 </body>
 </html>
