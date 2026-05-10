@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dikankafilms</title>
+  <title>Dikanka Films</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
     body{
-      background:#ffffff;
-      color:#000000;
+      background: #fdfdfd;
+      color: #000;
       overflow-x:hidden;
-      font-family:'Inter', sans-serif;
+      font-family:'Inter',sans-serif;
+      position: relative;
     }
     section{
       min-height:100vh;
@@ -39,110 +40,103 @@
       justify-content:center;
       gap:40px;
       padding:28px;
-      background:rgba(255,255,255,0.8);
+      background:rgba(255,255,255,0.85);
       backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(0,0,0,0.06);
     }
     nav a{
       text-decoration:none;
-      color:rgba(0,0,0,0.7);
+      color:rgba(0,0,0,0.72);
       text-transform:uppercase;
       letter-spacing:0.25em;
       font-size:0.72rem;
       transition:0.4s ease;
     }
-    nav a:hover{
-      color:black;
-      transform:translateY(-2px);
-    }
+    nav a:hover{color:#00c2ff; transform:translateY(-2px);}
 
-    /* HERO */
-    .hero{
-      text-align:center;
-      position:relative;
-      z-index:10;
-    }
-    .brand{
-      font-family:'Syne', sans-serif;
-      font-weight:800;
-      font-size:clamp(4rem,13vw,11rem);
-      line-height:0.9;
-      letter-spacing:-0.04em;
-      position:relative;
-      margin-bottom:20px;
-    }
-    .brand img{
-      max-width:300px;
-      width:80%;
-      height:auto;
-    }
-    .subtitle{
-      margin-top:30px;
-      text-transform:uppercase;
-      letter-spacing:0.45em;
-      color:rgba(0,0,0,0.6);
-      font-size:0.72rem;
-    }
-
-    /* ARTISTIC ELEMENTS */
-    .blur-circle{
+    /* ARTISTIC ORBS */
+    .gradient{
       position:absolute;
       border-radius:50%;
-      filter:blur(100px);
-      opacity:0.05;
-      background:#000000;
-      mix-blend-mode:overlay;
-    }
-    .line-element{
-      position:absolute;
-      width:2px;
-      height:80%;
-      background:rgba(0,0,0,0.05);
-      top:10%;
-      left:50%;
-      transform:rotate(15deg);
+      filter:blur(120px);
+      opacity:0.7;
+      mix-blend-mode:screen;
     }
 
-    .content{
+    .g1{width:45vw; height:45vw; background:#00c2ff; top:-10%; left:-15%; animation:float1 20s ease-in-out infinite;}
+    .g2{width:38vw; height:38vw; background:#ffffff; top:15%; right:-10%; opacity:0.2; animation:float2 16s ease-in-out infinite;}
+    .g3{width:30vw; height:30vw; background:#b0b0b0; bottom:-10%; left:20%; opacity:0.25; animation:float3 22s ease-in-out infinite;}
+    .g4{width:25vw; height:25vw; background:#000000; bottom:5%; right:12%; opacity:0.06; animation:float4 18s ease-in-out infinite;}
+    .g5{width:35vw; height:35vw; background:#00b8ff; top:40%; left:50%; opacity:0.18; animation:float5 24s ease-in-out infinite;}
+
+    /* PULSATING RINGS */
+    .ring{position:absolute;border-radius:50%;border:1px solid rgba(0,0,0,0.06);}
+    .r1{width:760px;height:760px;animation:rotateSlow 30s linear infinite;}
+    .r2{width:520px;height:520px;animation:rotateReverse 24s linear infinite;}
+    .r3{width:300px;height:300px;animation:pulse 8s ease-in-out infinite;border:1px solid rgba(0,194,255,0.25);}
+    .r4{width:920px;height:920px;animation:pulseSlow 14s ease-in-out infinite;border:1px solid rgba(0,0,0,0.04);}
+
+    /* HERO */
+    .hero{position:relative; z-index:10; text-align:center; max-width:1100px;}
+    .brand{
+      font-family:'Syne',sans-serif;
+      font-weight:800;
+      font-size:clamp(4rem,12vw,10rem);
+      line-height:0.88;
+      letter-spacing:-0.05em;
       position:relative;
-      z-index:10;
-      max-width:900px;
-      text-align:center;
+      color:#000;
+      text-shadow:0 0 25px rgba(0,0,0,0.08),0 0 80px rgba(0,194,255,0.15);
+      animation:heroFloat 7s ease-in-out infinite;
     }
-    h2{
-      font-family:'Syne', sans-serif;
-      font-size:clamp(3rem,8vw,7rem);
-      margin-bottom:30px;
-      line-height:0.9;
+    .subtitle{
+      margin-top:36px;
+      color:rgba(0,0,0,0.7);
+      text-transform:uppercase;
+      letter-spacing:0.38em;
+      line-height:2.2;
+      font-size:0.76rem;
     }
-    p{
-      font-size:1.4rem;
-      line-height:1.8;
-      color:rgba(0,0,0,0.75);
-    }
+
+    /* CONTENT */
+    .content{position:relative; z-index:10; max-width:900px; text-align:center;}
+    h2{font-family:'Syne',sans-serif;font-size:clamp(3rem,8vw,6rem);margin-bottom:32px;line-height:0.95;}
+    p{font-size:1.35rem; line-height:1.9;color:rgba(0,0,0,0.76);}
+
+    /* CONTACT */
     .contact-box{
-      margin-top:40px;
-      padding:50px;
+      margin-top:45px;
+      padding:55px 40px;
       border-radius:30px;
       background:rgba(0,0,0,0.04);
       border:1px solid rgba(0,0,0,0.08);
       backdrop-filter:blur(20px);
-      box-shadow:0 0 40px rgba(0,0,0,0.04);
+      box-shadow:0 0 40px rgba(0,194,255,0.08);
     }
     .contact-line{
-      margin:16px 0;
-      font-size:1.2rem;
+      margin:18px 0;
+      font-size:1.1rem;
       letter-spacing:0.08em;
+      color:rgba(0,0,0,0.86);
     }
+
+    /* ANIMATIONS */
+    @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(120px,70px);}}
+    @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(-100px,90px);}}
+    @keyframes float3{0%,100%{transform:translate(0,0);}50%{transform:translate(-80px,-80px);}}
+    @keyframes float4{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,-60px);}}
+    @keyframes float5{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,50px);}}
+    @keyframes rotateSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+    @keyframes rotateReverse{from{transform:rotate(360deg);}to{transform:rotate(0deg);}}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:0.4;}50%{transform:scale(1.14);opacity:1;}}
+    @keyframes pulseSlow{0%,100%{transform:scale(1);opacity:0.3;}50%{transform:scale(1.05);opacity:0.7;}}
+    @keyframes heroFloat{0%,100%{transform:translateY(0px);}50%{transform:translateY(-12px);}}
 
     /* MOBILE */
     @media(max-width:768px){
-      nav{gap:20px;}
-      nav a{font-size:0.58rem;}
-      .brand{font-size:4.5rem;}
-      h2{font-size:3rem;}
-      p{font-size:1.1rem;}
-      .contact-box{padding:35px 20px;}
-      .subtitle{font-size:0.6rem;letter-spacing:0.22em;}
+      nav{gap:18px;} nav a{font-size:0.58rem;} .brand{font-size:4.5rem;}
+      h2{font-size:3rem;} p{font-size:1.08rem;} .subtitle{font-size:0.58rem;letter-spacing:0.18em;}
+      .r1{width:430px;height:430px;} .r2{width:300px;height:300px;} .r3{width:180px;height:180px;} .r4{width:520px;height:520px;}
     }
   </style>
 </head>
@@ -157,34 +151,51 @@
 
   <!-- HOME -->
   <section id="home">
-    <div class="blur-circle" style="width:40vw;height:40vw;top:-10%;left:-10%;"></div>
-    <div class="blur-circle" style="width:35vw;height:35vw;top:20%;right:-10%;"></div>
-    <div class="line-element"></div>
+
+    <div class="gradient g1"></div>
+    <div class="gradient g2"></div>
+    <div class="gradient g3"></div>
+    <div class="gradient g4"></div>
+    <div class="gradient g5"></div>
+
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="ring r4"></div>
 
     <div class="hero">
-      <div class="brand">
-        <img src="dikanka_films_logo.png" alt="Dikanka Films Logo">
-      </div>
-      <div class="subtitle">
-        cinematic systems • moving atmospheres • future couture
-      </div>
+      <div class="brand">DIKANKA<br>FILMS</div>
+      <div class="subtitle">Development • Production • Media Sales & Acquisitions • Consulting</div>
     </div>
+
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="blur-circle" style="width:30vw;height:30vw;top:50%;left:60%;"></div>
+
+    <div class="gradient g2"></div>
+    <div class="gradient g4"></div>
+    <div class="ring r2"></div>
+
     <div class="content">
       <h2>About</h2>
       <p>
-        Dikanka Films is an independent production company developing character-driven fiction, animation, and documentary projects with strong visual identity and international appeal.
+        Dikanka Films is an independent production company
+        developing character-driven fiction, animation,
+        and documentary projects with strong visual identity
+        and international appeal.
       </p>
     </div>
+
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="blur-circle" style="width:30vw;height:30vw;top:10%;left:20%;"></div>
+
+    <div class="gradient g1"></div>
+    <div class="gradient g3"></div>
+    <div class="ring r1"></div>
+
     <div class="content">
       <h2>Contact</h2>
       <div class="contact-box">
@@ -194,6 +205,7 @@
         <div class="contact-line">EC1V2NX</div>
       </div>
     </div>
+
   </section>
 
 </body>
