@@ -7,227 +7,100 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
     body{
-      background:#060606;
-      color:white;
+      background:#ffffff;
+      color:#000000;
       overflow-x:hidden;
       font-family:'Inter', sans-serif;
     }
-
     section{
       min-height:100vh;
       position:relative;
       overflow:hidden;
-
       display:flex;
       align-items:center;
       justify-content:center;
-
       padding:120px 10vw;
     }
 
     /* NAV */
-
     nav{
       position:fixed;
       top:0;
       left:0;
       width:100%;
       z-index:1000;
-
       display:flex;
       justify-content:center;
       gap:40px;
-
       padding:28px;
-
-      background:rgba(0,0,0,0.08);
+      background:rgba(255,255,255,0.8);
       backdrop-filter:blur(16px);
     }
-
     nav a{
       text-decoration:none;
-      color:rgba(255,255,255,0.72);
-
+      color:rgba(0,0,0,0.7);
       text-transform:uppercase;
       letter-spacing:0.25em;
       font-size:0.72rem;
-
       transition:0.4s ease;
     }
-
     nav a:hover{
-      color:white;
+      color:black;
       transform:translateY(-2px);
     }
 
-    /* BACKGROUND GLOW */
-
-    .gradient{
-      position:absolute;
-      border-radius:50%;
-      filter:blur(80px);
-      mix-blend-mode:screen;
-      opacity:0.8;
-    }
-
-    .g1{
-      width:40vw;
-      height:40vw;
-
-      background:#00c2ff;
-
-      top:-10%;
-      left:-10%;
-
-      animation:move1 18s ease-in-out infinite;
-    }
-
-    .g2{
-      width:35vw;
-      height:35vw;
-
-      background:#ff0055;
-
-      right:-10%;
-      top:20%;
-
-      animation:move2 16s ease-in-out infinite;
-    }
-
-    .g3{
-      width:30vw;
-      height:30vw;
-
-      background:#ff9500;
-
-      bottom:-10%;
-      left:30%;
-
-      animation:move3 20s ease-in-out infinite;
-    }
-
-    .g4{
-      width:22vw;
-      height:22vw;
-
-      background:#6a5cff;
-
-      bottom:10%;
-      right:15%;
-
-      animation:move4 15s ease-in-out infinite;
-    }
-
-    /* SWIRLS */
-
-    .swirl{
-      position:absolute;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .s1{
-      width:700px;
-      height:700px;
-
-      animation:rotateSlow 35s linear infinite;
-    }
-
-    .s2{
-      width:500px;
-      height:500px;
-
-      animation:rotateReverse 28s linear infinite;
-    }
-
-    .s3{
-      width:300px;
-      height:300px;
-
-      animation:pulse 8s ease-in-out infinite;
-    }
-
     /* HERO */
-
     .hero{
       text-align:center;
       position:relative;
       z-index:10;
     }
-
     .brand{
       font-family:'Syne', sans-serif;
       font-weight:800;
-
       font-size:clamp(4rem,13vw,11rem);
-
       line-height:0.9;
       letter-spacing:-0.04em;
-
       position:relative;
-
-      animation:float 8s ease-in-out infinite;
-
-      text-shadow:
-        0 0 30px rgba(255,255,255,0.08),
-        0 0 80px rgba(255,255,255,0.04);
+      margin-bottom:20px;
     }
-
-    .brand::before{
-      content:"dikankafilms";
-
-      position:absolute;
-      inset:0;
-
-      background:
-        linear-gradient(
-          90deg,
-          #ffffff,
-          #8adfff,
-          #ff6ba2,
-          #ffffff
-        );
-
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-
-      filter:blur(14px);
-
-      opacity:0.45;
-
-      z-index:-1;
-
-      animation:gradientShift 6s linear infinite;
+    .brand img{
+      max-width:300px;
+      width:80%;
+      height:auto;
     }
-
     .subtitle{
       margin-top:30px;
-
       text-transform:uppercase;
       letter-spacing:0.45em;
-
-      color:rgba(255,255,255,0.6);
-
+      color:rgba(0,0,0,0.6);
       font-size:0.72rem;
     }
 
-    /* ABOUT */
+    /* ARTISTIC ELEMENTS */
+    .blur-circle{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(100px);
+      opacity:0.05;
+      background:#000000;
+      mix-blend-mode:overlay;
+    }
+    .line-element{
+      position:absolute;
+      width:2px;
+      height:80%;
+      background:rgba(0,0,0,0.05);
+      top:10%;
+      left:50%;
+      transform:rotate(15deg);
+    }
 
     .content{
       position:relative;
@@ -235,181 +108,42 @@
       max-width:900px;
       text-align:center;
     }
-
     h2{
       font-family:'Syne', sans-serif;
       font-size:clamp(3rem,8vw,7rem);
       margin-bottom:30px;
       line-height:0.9;
     }
-
     p{
       font-size:1.4rem;
       line-height:1.8;
-
-      color:rgba(255,255,255,0.75);
+      color:rgba(0,0,0,0.75);
     }
-
-    /* CONTACT */
-
     .contact-box{
       margin-top:40px;
-
       padding:50px;
-
       border-radius:30px;
-
-      background:rgba(255,255,255,0.04);
-
-      border:1px solid rgba(255,255,255,0.08);
-
+      background:rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.08);
       backdrop-filter:blur(20px);
-
-      box-shadow:
-        0 0 40px rgba(255,255,255,0.04);
+      box-shadow:0 0 40px rgba(0,0,0,0.04);
     }
-
     .contact-line{
       margin:16px 0;
-
       font-size:1.2rem;
       letter-spacing:0.08em;
     }
 
-    /* ANIMATIONS */
-
-    @keyframes move1{
-      0%,100%{
-        transform:translate(0,0);
-      }
-      50%{
-        transform:translate(120px,80px);
-      }
-    }
-
-    @keyframes move2{
-      0%,100%{
-        transform:translate(0,0);
-      }
-      50%{
-        transform:translate(-100px,120px);
-      }
-    }
-
-    @keyframes move3{
-      0%,100%{
-        transform:translate(0,0);
-      }
-      50%{
-        transform:translate(-80px,-100px);
-      }
-    }
-
-    @keyframes move4{
-      0%,100%{
-        transform:translate(0,0);
-      }
-      50%{
-        transform:translate(80px,-80px);
-      }
-    }
-
-    @keyframes rotateSlow{
-      from{
-        transform:rotate(0deg);
-      }
-      to{
-        transform:rotate(360deg);
-      }
-    }
-
-    @keyframes rotateReverse{
-      from{
-        transform:rotate(360deg);
-      }
-      to{
-        transform:rotate(0deg);
-      }
-    }
-
-    @keyframes pulse{
-      0%,100%{
-        transform:scale(1);
-        opacity:0.4;
-      }
-      50%{
-        transform:scale(1.15);
-        opacity:1;
-      }
-    }
-
-    @keyframes float{
-      0%,100%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-12px);
-      }
-    }
-
-    @keyframes gradientShift{
-      0%{
-        filter:blur(14px) hue-rotate(0deg);
-      }
-      100%{
-        filter:blur(14px) hue-rotate(360deg);
-      }
-    }
-
     /* MOBILE */
-
     @media(max-width:768px){
-
-      nav{
-        gap:20px;
-      }
-
-      nav a{
-        font-size:0.58rem;
-      }
-
-      .brand{
-        font-size:4.5rem;
-      }
-
-      h2{
-        font-size:3rem;
-      }
-
-      p{
-        font-size:1.1rem;
-      }
-
-      .contact-box{
-        padding:35px 20px;
-      }
-
-      .subtitle{
-        font-size:0.6rem;
-        letter-spacing:0.22em;
-      }
-
-      .s1{
-        width:400px;
-        height:400px;
-      }
-
-      .s2{
-        width:300px;
-        height:300px;
-      }
-
-      .s3{
-        width:180px;
-        height:180px;
-      }
+      nav{gap:20px;}
+      nav a{font-size:0.58rem;}
+      .brand{font-size:4.5rem;}
+      h2{font-size:3rem;}
+      p{font-size:1.1rem;}
+      .contact-box{padding:35px 20px;}
+      .subtitle{font-size:0.6rem;letter-spacing:0.22em;}
     }
-
   </style>
 </head>
 
@@ -417,97 +151,49 @@
 
   <nav>
     <a href="#home">Home</a>
-    <a href="#about">Studio</a>
+    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <!-- HOME -->
-
   <section id="home">
-
-    <div class="gradient g1"></div>
-    <div class="gradient g2"></div>
-    <div class="gradient g3"></div>
-    <div class="gradient g4"></div>
-
-    <div class="swirl s1"></div>
-    <div class="swirl s2"></div>
-    <div class="swirl s3"></div>
+    <div class="blur-circle" style="width:40vw;height:40vw;top:-10%;left:-10%;"></div>
+    <div class="blur-circle" style="width:35vw;height:35vw;top:20%;right:-10%;"></div>
+    <div class="line-element"></div>
 
     <div class="hero">
-
       <div class="brand">
-        dikanka
-        films
+        <img src="dikanka_films_logo.png" alt="Dikanka Films Logo">
       </div>
-
       <div class="subtitle">
         cinematic systems • moving atmospheres • future couture
       </div>
-
     </div>
-
   </section>
 
   <!-- ABOUT -->
-
   <section id="about">
-
-    <div class="gradient g2"></div>
-    <div class="gradient g4"></div>
-
-    <div class="swirl s2"></div>
-
+    <div class="blur-circle" style="width:30vw;height:30vw;top:50%;left:60%;"></div>
     <div class="content">
-
-      <h2>
-        studio
-      </h2>
-
+      <h2>About</h2>
       <p>
-        Dikankafilms explores visual emotion through movement,
-        abstraction, architecture, sound and fashion language.
-        Experimental cinema influenced by postmodern aesthetics,
-        dream structures, luxury textures and digital atmosphere.
+        Dikanka Films is an independent production company developing character-driven fiction, animation, and documentary projects with strong visual identity and international appeal.
       </p>
-
     </div>
-
   </section>
 
   <!-- CONTACT -->
-
   <section id="contact">
-
-    <div class="gradient g1"></div>
-    <div class="gradient g3"></div>
-
-    <div class="swirl s1"></div>
-
+    <div class="blur-circle" style="width:30vw;height:30vw;top:10%;left:20%;"></div>
     <div class="content">
-
-      <h2>
-        contact
-      </h2>
-
+      <h2>Contact</h2>
       <div class="contact-box">
-
-        <div class="contact-line">
-          Anna Pokorskaya
-        </div>
-
-        <div class="contact-line">
-          Paris
-        </div>
-
-        <div class="contact-line">
-          France
-        </div>
-
+        <div class="contact-line">ap@dikankafilms.com</div>
+        <div class="contact-line">128 City Road</div>
+        <div class="contact-line">London, UK</div>
+        <div class="contact-line">EC1V2NX</div>
       </div>
-
     </div>
-
   </section>
 
 </body>
